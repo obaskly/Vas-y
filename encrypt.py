@@ -12,107 +12,107 @@ def encrypt():
     for message in sen:
     
         if message == 'a':
-            message = '/*'
+            message = '؛'
         elif message == 'b':
-            message = '048'
+            message = '1'
         elif message == 'c':
-            message = '&'
+            message = '2'
         elif message == 'd':
-            message = 'z'
+            message = '3'
         elif message == 'e':
-            message = "à"
+            message = "4"
         elif message == 'f':
-            message = '@'
+            message = '5'
         elif message == 'g':
-            message = ')'
+            message = '6'
         elif message == 'h':
-            message = '8-'
+            message = '7'
         elif message == 'i':
-            message = '<'
+            message = '8'
         elif message == 'j':
-            message = '>'
+            message = '9'
         elif message == 'k':
-            message = '$'
+            message = '.'
         elif message == 'l':
-            message = 'é'
+            message = '+'
         elif message == 'm':
-            message = 'r'
-        elif message == 'n':
-            message = '_'
-        elif message == 'o':
             message = '-'
-        elif message == 'p':
-            message = 'è'
-        elif message == 'q':
+        elif message == 'n':
             message = '*'
+        elif message == 'o':
+            message = '/'
+        elif message == 'p':
+            message = '='
+        elif message == 'q':
+            message = ')'
         elif message == 'r':
-            message = '*/'
+            message = "à"
         elif message == 's':
-            message = '+4'
-        elif message == 't':
-            message = '0.'
-        elif message == 'u':
-            message = '4-p'
-        elif message == 'v':
             message = 'ç'
+        elif message == 't':
+            message = '_'
+        elif message == 'u':
+            message = 'è'
+        elif message == 'v':
+            message = '-'
         elif message == 'w':
-            message = '*-+'
+            message = '('
         elif message == 'x':
-            message = '+-'
+            message = '"'
         elif message == 'y':
-            message = '-+'
+            message = 'é'
         elif message == 'z':
-            message = '0.0'
+            message = '&'
         elif message == 'é':
-            message = '+6-.'
+            message = '²'
         elif message == 'è':
-            message = '@ù'
+            message = '}'
         elif message == 'à':
-            message = '.*.+'
+            message = ']'
         elif message == 'ç':
-            message = '^14-+.^'
+            message = '@'
         elif message == '0':
-            message = 'x0x'
+            message = '^'
         elif message == '1':
-            message = './'
+            message = '|'
         elif message == '2':
-            message = '+à'
+            message = '`'
         elif message == '3':
-            message = '--++'
+            message = '['
         elif message == '4':
-            message = '+(-'
+            message = '{'
         elif message == '5':
-            message = '3.20'
+            message = '#'
         elif message == '6':
-            message = '<5-'
+            message = '~'
         elif message == '7':
-            message = '+2./'
+            message = '<'
         elif message == '8':
-            message = '-à.-'
+            message = '>'
         elif message == '9':
-            message = '++9.0'
+            message = '$'
         elif message == ' ':
-            message = '+.+'
+            message = '£'
         elif message == ',':
-            message = '-.-'
+            message = 'µ'
         elif message == '.':
-            message = '*-*'
+            message = 'ù'
         elif message == '(':
-            message = '-*-'
+            message = '%'
         elif message == ')':
-            message = '_-_'
+            message = '!'
         elif message == ':':
-            message = '-_-'
+            message = '§'
         elif message == ';':
-            message = ':)'
+            message = '؟'
         elif message == '!':
-            message = ':('
+            message = ','
         elif message == '?':
-            message = ':D'
+            message = ':'
         elif message == '-':
-            message = ':*'
+            message = ';'
         elif message == '_':
-            message = ':p'
+            message = '?'
         
         encryptedString+=message
 
