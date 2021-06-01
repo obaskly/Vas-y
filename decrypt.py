@@ -8,109 +8,107 @@ def decrypt():
     clearString = sen
     for message in sen:
 
-        if message == '/*':
+        if message == '؛':
             message = 'a'
-        elif message == '048':
+        elif message == '1':
             message = 'b'
-        elif message == '&':
+        elif message == '2':
             message = 'c'
-        elif message == 'z':
+        elif message == '3':
             message = 'd'
-        elif message == 'à':
-            message = 'e'
-        elif message == '@':
+        elif message == '4':
+            message = "e"
+        elif message == '5':
             message = 'f'
-        elif message == ')':
+        elif message == '6':
             message = 'g'
-        elif message == '8-':
+        elif message == '7':
             message = 'h'
-        elif message == '<':
+        elif message == '8':
             message = 'i'
-        elif message == '>':
+        elif message == '9':
             message = 'j'
-        elif message == '$':
+        elif message == '.':
             message = 'k'
-        elif message == 'é':
+        elif message == '+':
             message = 'l'
-        elif message == 'r':
-            message = 'm'
-        elif message == '_':
-            message = 'n'
         elif message == '-':
-            message = 'o'
-        elif message == 'è':
-            message = 'p'
+            message = 'm'
         elif message == '*':
+            message = 'n'
+        elif message == '/':
+            message = 'o'
+        elif message == '=':
+            message = 'p'
+        elif message == ')':
             message = 'q'
-        elif message == '*/':
-            message = 'r'
-        elif message == '+4':
-            message = 's'
-        elif message == '0.':
-            message = 't'
-        elif message == '4-p':
-            message = 'u'
+        elif message == 'à':
+            message = "r"
         elif message == 'ç':
+            message = 's'
+        elif message == '_':
+            message = 't'
+        elif message == 'è':
+            message = 'u'
+        elif message == '-':
             message = 'v'
-        elif message == '*-+':
+        elif message == '(':
             message = 'w'
-        elif message == '+-':
+        elif message == '"':
             message = 'x'
-        elif message == '-+':
+        elif message == 'é':
             message = 'y'
-        elif message == '0.0':
+        elif message == '&':
             message = 'z'
-        
-        elif message == '+6-.':
+        elif message == '²':
             message = 'é'
-        elif message == '@ù':
+        elif message == '}':
             message = 'è'
-        elif message == '.*.+':
+        elif message == ']':
             message = 'à'
-        elif message == '^14-+.^':
+        elif message == '@':
             message = 'ç'
-
-        elif message == 'x0x':
+        elif message == '^':
             message = '0'
-        elif message == './':
+        elif message == '|':
             message = '1'
-        elif message == '+à':
+        elif message == '`':
             message = '2'
-        elif message == '--++':
+        elif message == '[':
             message = '3'
-        elif message == '+(-':
+        elif message == '{':
             message = '4'
-        elif message == '3.20':
+        elif message == '#':
             message = '5'
-        elif message == '<5-':
+        elif message == '~':
             message = '6'
-        elif message == '+2./':
+        elif message == '<':
             message = '7'
-        elif message == '-à.-':
+        elif message == '>':
             message = '8'
-        elif message == '++9.0':
+        elif message == '$':
             message = '9'
-        elif message == '+.+':
+        elif message == '£':
             message = ' '
-        elif message == '-.-':
+        elif message == 'µ':
             message = ','
-        elif message == '*-*':
+        elif message == 'ù':
             message = '.'
-        elif message == '-*-':
+        elif message == '%':
             message = '('
-        elif message == '_-_':
+        elif message == '!':
             message = ')'
-        elif message == '-_-':
+        elif message == '§':
             message = ':'
-        elif message == ':)':
+        elif message == '؟':
             message = ';'
-        elif message == ':(':
+        elif message == ',':
             message = '!'
-        elif message == ':D':
+        elif message == ':':
             message = '?'
-        elif message == ':*':
+        elif message == ';':
             message = '-'
-        elif message == ':p':
+        elif message == '?':
             message = '_'
 
         DecryptedString+=message
