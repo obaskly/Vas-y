@@ -1,12 +1,53 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-def decrypt():
-    imo = str(input("Your message: "))
-    sen = imo.lower()
-   
+from tkinter import Tk, Button,Entry, FALSE
+from tkinter.constants import X
+from tkinter.ttk import *
+
+import base64
+
+
+def main():
+    global root
+    root = Tk()
+    root.resizable(FALSE, FALSE)
+    root.title("Decryptor")
+    root.geometry("220x170")
+    root.configure(background='black')
+ 
+    global e0
+    e0  = Entry(root) 
+    b0 = Button(root, text='Decrypt', command=lambda:[passing(), bar()])
+    global e1
+    e1 = Entry(root)
+    global progress
+    progress = Progressbar(root, orient = 'horizontal',
+              length = 200, mode = 'determinate')
+ 
+ 
+ 
+    e0.pack(pady = 10)
+    b0.pack(pady = 10)
+ 
+    e1.pack(pady = 10)
+
+    progress.pack(pady = 10)
+ 
+    root.mainloop()
+
+def bar():
+    progress['value'] = 100
+    root.update_idletasks()
+
+def passing():
+ 
+ 
+    input = e0.get()
+
+    string = base64.b64decode(input)
+    decoded = string.decode('utf-8')
+    
     DecryptedString = ''
-    clearString = sen
-    for message in sen:
+
+    for message in decoded:
 
         if message == '؛':
             message = 'a'
@@ -32,7 +73,7 @@ def decrypt():
             message = 'k'
         elif message == '+':
             message = 'l'
-        elif message == '-':
+        elif message == 'D':
             message = 'm'
         elif message == '*':
             message = 'n'
@@ -112,18 +153,9 @@ def decrypt():
             message = '_'
 
         DecryptedString+=message
+        
 
-    output = open("result", 'a')
-    output.write('========')
-    output.write('\n')
-    output.write("Text : " + str(imo) + '\n')
-    output.write("Cypher : " + str(DecryptedString) + '\n')
-    output.write('========\n\n')
-    output.close()
-
-    print("Clear String : ", clearString)
-    print("Decrypted String : ", DecryptedString)
-
-
-
-decrypt()
+    x = DecryptedString
+    root.clipboard_clear()
+    root.clipboard_append(str(x))
+    e1.insert(0, x)
