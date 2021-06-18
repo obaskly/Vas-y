@@ -1,15 +1,47 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-def encrypt():
+from tkinter import Tk, Button,Entry, FALSE
+from tkinter.constants import X
+from tkinter.ttk import *
+
+import base64
 
 
-    imo = str(input("Your message: "))
-    sen = imo.lower()
-   
+def main():
+    global root
+    root = Tk()
+    root.resizable(FALSE, FALSE)
+    root.title("Encryptor")
+    root.geometry("220x170")
+    root.configure(background='black')
  
+    global e0
+    e0  = Entry(root)
+    b0 = Button(root, text='Encrypt', command=lambda:[passing(),bar()])
+    global e1
+    e1 = Entry(root)
+    global progress
+    progress = Progressbar(root, orient = 'horizontal',
+              length = 200, mode = 'determinate')
+ 
+ 
+ 
+    e0.pack(pady = 10)
+    b0.pack(pady = 10)
+ 
+    e1.pack(pady = 10)
+
+    progress.pack(pady = 10)
+ 
+    root.mainloop()
+
+def bar():
+    progress['value'] = 100
+    root.update_idletasks()
+
+def passing():
+    input = e0.get()
+    
     encryptedString = ''
-    clearString = sen
-    for message in sen:
+    for message in input:
     
         if message == 'a':
             message = '؛'
@@ -36,7 +68,7 @@ def encrypt():
         elif message == 'l':
             message = '+'
         elif message == 'm':
-            message = '-'
+            message = 'D'
         elif message == 'n':
             message = '*'
         elif message == 'o':
@@ -115,17 +147,15 @@ def encrypt():
             message = '?'
         
         encryptedString+=message
+    
 
-    output = open("result", 'a')
-    output.write('========')
-    output.write('\n')
-    output.write("Text : " + str(imo) + '\n')
-    output.write("Cypher : " + str(encryptedString) + '\n')
-    output.write('========\n\n')
-    output.close()
+    stringToEncode = encryptedString.encode("utf-8")
+  
+    stringIn64 = base64.b64encode(stringToEncode)    
 
-    print("Clear String : ", clearString)
-    print("Encrypted String : ", encryptedString)
+ 
+    string = stringIn64.decode("utf-8")
 
-
-encrypt()
+    root.clipboard_clear()
+    root.clipboard_append(str(string))
+    e1.insert(0, stringIn64)
