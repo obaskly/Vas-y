@@ -8,7 +8,7 @@ from decrypt import main as dec
 def main():
     master = Tk()
     master.resizable(FALSE, FALSE)
-    master.title("Home")
+    master.title("Vas-y")
     messagebox.showinfo("Notice !", ''.join('All Rights Reserved To Bropocalypse Team'))
     
     master.geometry("220x200")
