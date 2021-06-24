@@ -73,7 +73,7 @@ def passing():
             message = 'k'
         elif message == '+':
             message = 'l'
-        elif message == 'D':
+        elif message == '’':
             message = 'm'
         elif message == '*':
             message = 'n'
