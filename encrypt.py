@@ -3,6 +3,9 @@ from tkinter.constants import X
 from tkinter.ttk import *
 
 import base64
+from Crypto.PublicKey import RSA
+from Crypto.Random import get_random_bytes
+from Crypto.Cipher import AES, PKCS1_OAEP
 
 
 def main():
@@ -10,14 +13,13 @@ def main():
     root = Tk()
     root.resizable(FALSE, FALSE)
     root.title("Encryptor")
-    root.geometry("220x170")
+    root.geometry("220x140")
     root.configure(background='black')
  
     global e0
     e0  = Entry(root)
     b0 = Button(root, text='Encrypt', command=lambda:[passing(),bar()])
-    global e1
-    e1 = Entry(root)
+    
     global progress
     progress = Progressbar(root, orient = 'horizontal',
               length = 200, mode = 'determinate')
@@ -26,8 +28,6 @@ def main():
  
     e0.pack(pady = 10)
     b0.pack(pady = 10)
- 
-    e1.pack(pady = 10)
 
     progress.pack(pady = 10)
  
@@ -156,6 +156,24 @@ def passing():
  
     string = stringIn64.decode("utf-8")
 
-    root.clipboard_clear()
-    root.clipboard_append(str(string))
-    e1.insert(0, stringIn64)
+
+    #### RSA & AES encryption
+
+    data = str(string).encode("utf-8")
+    file_out = open("encrypted_data.bin", "wb")
+
+    recipient_key = RSA.import_key(open("public.pem").read())
+    session_key = get_random_bytes(32)
+
+    # Encrypt with RSA key
+    cipher_rsa = PKCS1_OAEP.new(recipient_key)
+    enc_session_key = cipher_rsa.encrypt(session_key)
+
+    # Encrypt the data with the AES session key
+    cipher_aes = AES.new(session_key, AES.MODE_EAX)
+    ciphertext, tag = cipher_aes.encrypt_and_digest(data)
+    [file_out.write(x) for x in (enc_session_key, cipher_aes.nonce, tag, ciphertext)]
+    file_out.close()
+
+    #################
+    
