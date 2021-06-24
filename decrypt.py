@@ -1,8 +1,10 @@
 from tkinter import Tk, Button,Entry, FALSE
-from tkinter.constants import X
 from tkinter.ttk import *
 
 import base64
+from Crypto.PublicKey import RSA
+from Crypto.Random import get_random_bytes
+from Crypto.Cipher import AES, PKCS1_OAEP
 
 
 def main():
@@ -10,11 +12,9 @@ def main():
     root = Tk()
     root.resizable(FALSE, FALSE)
     root.title("Decryptor")
-    root.geometry("220x170")
+    root.geometry("220x140")
     root.configure(background='black')
  
-    global e0
-    e0  = Entry(root) 
     b0 = Button(root, text='Decrypt', command=lambda:[passing(), bar()])
     global e1
     e1 = Entry(root)
@@ -22,13 +22,8 @@ def main():
     progress = Progressbar(root, orient = 'horizontal',
               length = 200, mode = 'determinate')
  
- 
- 
-    e0.pack(pady = 10)
-    b0.pack(pady = 10)
- 
     e1.pack(pady = 10)
-
+    b0.pack(pady = 10)
     progress.pack(pady = 10)
  
     root.mainloop()
@@ -38,9 +33,29 @@ def bar():
     root.update_idletasks()
 
 def passing():
+
+    #### RSA & AES decryption
  
- 
-    input = e0.get()
+    file_in = open("encrypted_data.bin", "rb")
+
+    private_key = RSA.import_key(open("private.pem").read())
+
+    enc_session_key, nonce, tag, ciphertext = \
+       [ file_in.read(x) for x in (private_key.size_in_bytes(), 16, 16, -1) ]
+
+    # Decryption with the private RSA key
+    cipher_rsa = PKCS1_OAEP.new(private_key)
+    session_key = cipher_rsa.decrypt(enc_session_key)
+
+    # Decrypt the data with the AES session key
+    cipher_aes = AES.new(session_key, AES.MODE_EAX, nonce)
+    data = cipher_aes.decrypt_and_verify(ciphertext, tag)
+    sos = data.decode("utf-8")
+
+    #################
+
+
+    input = sos
 
     string = base64.b64decode(input)
     decoded = string.decode('utf-8')
