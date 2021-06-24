@@ -2,8 +2,8 @@
 from tkinter import * 
 from tkinter.ttk import *
 from tkinter import messagebox
-from enc import main as enc
-from dec import main as dec
+from encrypt import main as enc
+from decrypt import main as dec
 
 def main():
     master = Tk()
