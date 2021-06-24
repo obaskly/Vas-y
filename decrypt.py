@@ -1,3 +1,4 @@
+#Changing the code won't make you a coder
 from tkinter import Tk, Button,Entry, FALSE
 from tkinter.ttk import *
 
